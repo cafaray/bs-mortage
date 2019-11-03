@@ -1,0 +1,18 @@
+title: Importe
+type: object
+properties:
+  valor:
+    type: number
+    format: double
+    minimum: 0
+    maximum: 999999.99
+    description: Valor que determina una cantidad monetaria.
+  moneda:
+    type: string
+    default: EUR
+    minLength: 3
+    maxLength: 3
+    description: 'Identificador de moneda que representa el valor real del monto especificado. ISO 4217: https://www.iso.org/iso-4217-currency-codes.html'
+required:
+  - valor
+  - moneda

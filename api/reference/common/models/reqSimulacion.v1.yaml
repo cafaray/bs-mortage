@@ -1,0 +1,4 @@
+type: object
+properties:
+  simulacion:
+    $ref: ./simulacion.v1.yaml

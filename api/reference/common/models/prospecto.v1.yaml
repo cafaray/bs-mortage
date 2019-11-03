@@ -1,0 +1,25 @@
+title: Prospecto
+type: object
+properties:
+  id:
+    type: string
+    description: 'identificador unico de prospecto, es usado como referencia para crear un nuevo cliente o bien linkar con uno existente'
+    minLength: 32
+    maxLength: 64
+    pattern: '^[a-zA-Z0-9]+'
+  identificacion:
+    $ref: ./persona.v1.yaml
+  contacto:
+    $ref: ./contacto.v1.yaml
+  infoFinanciera:
+    $ref: ./informacionfinanciera.v1.yaml
+  infoAdicional:
+    type: string
+    minLength: 1
+    maxLength: 250
+    pattern: '^[w]+'
+required:
+  - id
+  - identificacion
+  - contacto
+  - infoFinanciera

@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: simulador
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /simulacion:
+    post:
+      summary: Registra Simulacion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resSimulacion:
+                    $ref: ../common/models/simulacion.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../common/models/reqSimulacion.v1.yaml
+      description: Genera una entrada de simulación
+      operationId: crearSimulacion
+      tags:
+        - Simulacion
+  '/simulacion/{id}':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 32
+          pattern: '^[a-zA-Z0-9]+'
+        description: identificador de simulación ya existente
+    get:
+      summary: Simulación
+      tags:
+        - Simulacion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/resSimulacion.v1.yaml
+      description: obtiene una simulación
+      security:
+        - API Key - 1: []
+      operationId: obtenerSimulacion
+  '/simulacion/{id}/amortizacion':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 32
+          maxLength: 64
+          pattern: '^[a-zA-Z0-9]+'
+        description: identificador de simulación exsitente
+    get:
+      summary: Simulacion Tabla de amortización
+      tags:
+        - Simulacion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/ressimulaciondetalle.v1.yaml
+      security:
+        - API Key - 1: []
+      operationId: obtenerSimulacionAmortizacion
+      description: Obtiene tabla de amortización de la simulación
+  /prospecto:
+    post:
+      summary: Crea prospecto
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/prospecto.v1.yaml
+      operationId: crearProspecto
+      description: Crea un nuevo prospecto con base a su información personal y financiera
+      security:
+        - API Key - 1: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                personales:
+                  $ref: ../common/models/prospecto.v1.yaml
+                infoFinanciera:
+                  $ref: ../common/models/informacionfinanciera.v1.yaml
+      tags:
+        - Prospecto
+    parameters: []
+  '/prospecto/{id}':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 32
+          pattern: '^[A-Za-z0-9]+'
+        required: true
+    get:
+      summary: Obtener prospecto
+      tags:
+        - Prospecto
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../common/models/prospecto.v1.yaml
+      operationId: obtenerProspecto
+      description: Obtiene un prospecto a través de su identificador previamente generado.
+components:
+  schemas: {}
+  securitySchemes:
+    API Key - 1:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: []
+        authorizationCode:
+          authorizationUrl: ''
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: []

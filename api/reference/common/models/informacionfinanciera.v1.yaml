@@ -1,0 +1,47 @@
+title: InformacionFinanciera
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    minLength: 32
+    maxLength: 64
+  salarioAnual:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 99999
+  otrosIngresos:
+    type: number
+    format: double
+    minimum: 0
+    maximum: 99999
+  disponibilidadMensual:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 9999
+  antiguedad:
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 99
+  sector:
+    type: string
+    minLength: 1
+    maxLength: 60
+  otrosPrestamos:
+    type: number
+    format: double
+    minimum: 0
+    maximum: 9999
+  enParo:
+    type: boolean
+    default: false
+required:
+  - id
+  - salarioAnual
+  - otrosIngresos
+  - disponibilidadMensual
+  - antiguedad
+  - enParo

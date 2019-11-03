@@ -1,0 +1,26 @@
+title: Contacto
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  correo:
+    type: string
+    format: email
+  telefono1:
+    type: string
+    minLength: 9
+    maxLength: 12
+    pattern: '^[0-9]+'
+  telefono2:
+    type: string
+    minLength: 9
+    maxLength: 12
+    pattern: '^[0-9]+'
+  telefono3:
+    type: string
+    minLength: 9
+    maxLength: 12
+    pattern: '^[0-9]+'
+required:
+  - id

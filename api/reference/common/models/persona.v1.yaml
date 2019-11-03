@@ -1,0 +1,22 @@
+title: Persona
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    minLength: 32
+    maxLength: 64
+  nombre:
+    type: string
+    minLength: 1
+    maxLength: 60
+  apellidos:
+    type: string
+    minLength: 1
+    maxLength: 90
+  dni:
+    type: string
+    pattern: '^[A-Z][0-9]6|[A-Z]1'
+required:
+  - id
+  - nombre

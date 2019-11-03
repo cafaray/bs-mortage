@@ -1,0 +1,48 @@
+title: resSimulacion
+type: object
+description: Respuesta a una ejecución de simulación
+properties:
+  simulacion:
+    $ref: ./ressimulacion.v1.yaml
+  valorTasa:
+    type: number
+    format: float
+    minimum: 0
+    maximum: 1
+  euribor:
+    type: number
+    format: float
+    minimum: 0
+    maximum: 1
+  diferencial:
+    type: number
+    format: float
+    minimum: 0
+    maximum: 1
+  interesAnual:
+    type: number
+    format: float
+    minimum: 0
+    maximum: 1
+  totalPago:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 999999
+  totalInteres:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 999999
+  identificador:
+    type: string
+    format: uuid
+    minLength: 32
+    maxLength: 64
+required:
+  - simulacion
+  - valorTasa
+  - interesAnual
+  - totalPago
+  - totalInteres
+  - identificador

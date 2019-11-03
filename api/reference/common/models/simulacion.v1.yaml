@@ -1,0 +1,28 @@
+title: simulacion
+type: object
+description: Determina los campos base para la preparación o retorno de una simulación de crédito hipotecario.
+properties:
+  tipoTasa:
+    type: string
+    default: FIJA
+    description: 'Determina el tipo de tasa a considerar, los valores posibles son: FIJA o VARIABLE. representando el uso de una tasa de interes fijo durante todo el período del préstamo o bien una tasa variable.'
+  capital:
+    $ref: ./importe.v1.yaml
+  plazo:
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 40
+    description: 'Plazo en años para el cálculo del tiempo. Se puede especificar el plazo o bien, si se especifica una cuota mensual, se podrá hacer el cálculo del plazo.'
+  cuota:
+    $ref: ./importe.v1.yaml
+  numeroCuotas:
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 40
+    description: Valor calculado que determina el número de pagos según el plazo y la cuota. Esta directamente asociado con el tiempo que llevará cubrir la totalidad del préstamo hipotecario.
+required:
+  - tipoTasa
+  - capital
+  - numeroCuotas

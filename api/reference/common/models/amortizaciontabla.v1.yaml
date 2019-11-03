@@ -1,0 +1,48 @@
+title: AmortizacionTabla
+type: object
+properties:
+  id:
+    type: string
+  interesAnual:
+    type: number
+    format: double
+    minimum: 0.1
+    maximum: 100
+  anyo:
+    type: integer
+    format: int32
+    minimum: 0
+    maximum: 39
+  mes:
+    type: integer
+    format: int32
+    minimum: 1
+    maximum: 480
+  importeCuota:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 99999
+  importeInteres:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 9999
+  amortizacion:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 9999
+  saldo:
+    type: number
+    format: double
+    minimum: 1
+    maximum: 9999
+required:
+  - interesAnual
+  - anyo
+  - mes
+  - importeCuota
+  - importeInteres
+  - amortizacion
+  - saldo
