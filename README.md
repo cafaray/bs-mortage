@@ -1,2 +1,2 @@
-#Banc Sabdell - Sample projects.
+#Sample project under py tech.
 Mortage API Sample
