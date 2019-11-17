@@ -1,0 +1,211 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Employees API"
+  contact:
+    name: "Apigee"
+    email: "support@apigee.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "cosafinity-prod.apigee.net"
+basePath: "/v1/employees"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /:
+    get:
+      summary: "Get all Employees"
+      description: "This endpoint returns a list of all Employees as an array."
+      operationId: "root_get"
+      parameters: []
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/EmployeesArray"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+    post:
+      summary: "Create a new Employee"
+      description: "This endpoint will create a new Employee."
+      operationId: "root_post"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "an Employee oject"
+        required: true
+        schema:
+          $ref: "#/definitions/Employee"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Employee"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /{employee-uuid}:
+    get:
+      summary: "Get an Employee with given UUID."
+      description: "This endpoint returns a Employee from a given UUID."
+      operationId: "employee_uuid_get"
+      parameters:
+      - name: "employee_uuid"
+        in: "path"
+        description: "UUID of a Employee"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Employee"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+    put:
+      summary: "Update an Employee with given UUID"
+      description: "This endpoint will update an existing Employee."
+      operationId: "employee_uuid_put"
+      parameters:
+      - name: "employee_uuid"
+        in: "path"
+        description: "UUID of a Employee"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "an Employee oject"
+        required: true
+        schema:
+          $ref: "#/definitions/Employee"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Employee"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+    delete:
+      summary: "Delete an Employee with given UUID"
+      description: "This endpoint will delete an existing Employee."
+      operationId: "employee_uuid_delete"
+      parameters:
+      - name: "employee_uuid"
+        in: "path"
+        description: "UUID of a Employee"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Employee"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+definitions:
+  EmployeesArray:
+    type: "array"
+    items:
+      $ref: "#/definitions/EmployeesArray_inner"
+  Employee:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "Beschreibung des"
+      type:
+        type: "string"
+      name:
+        type: "string"
+      created:
+        type: "integer"
+      modified:
+        type: "integer"
+      birthDate:
+        type: "string"
+      city:
+        type: "string"
+      department:
+        type: "string"
+      email:
+        type: "string"
+      gender:
+        type: "string"
+      isActive:
+        type: "boolean"
+      metadata:
+        $ref: "#/definitions/EmployeesArray_inner_metadata"
+      phone:
+        type: "string"
+      postal:
+        type: "integer"
+      state:
+        type: "string"
+      street:
+        type: "string"
+    example:
+      metadata:
+        path: "path"
+        size: 1
+      gender: "gender"
+      city: "city"
+      created: 0
+      type: "type"
+      isActive: true
+      uuid: "uuid"
+      birthDate: "birthDate"
+      phone: "phone"
+      street: "street"
+      name: "name"
+      modified: 6
+      postal: 5
+      state: "state"
+      department: "department"
+      email: "email"
+  EmployeesArray_inner_metadata:
+    type: "object"
+    properties:
+      path:
+        type: "string"
+      size:
+        type: "integer"
+    example:
+      path: "path"
+      size: 1
+  EmployeesArray_inner:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+      type:
+        type: "string"
+      name:
+        type: "string"
+      created:
+        type: "integer"
+      modified:
+        type: "integer"
+      birthDate:
+        type: "string"
+      city:
+        type: "string"
+      department:
+        type: "string"
+      email:
+        type: "string"
+        description: "test"
+      gender:
+        type: "string"
+      isActive:
+        type: "boolean"
+      metadata:
+        $ref: "#/definitions/EmployeesArray_inner_metadata"
+      phone:
+        type: "string"
+      postal:
+        type: "integer"
+      state:
+        type: "string"
+      street:
+        type: "string"
